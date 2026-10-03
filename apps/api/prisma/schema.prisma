@@ -1,0 +1,31 @@
+// ==============================================================================
+// Prisma Schema - Blog Management (Phase 1 Minimal Baseline)
+// ==============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BlogStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Blog {
+  id                  String     @id @default(uuid())
+  title               String
+  status              BlogStatus @default(DRAFT)
+  contentJson         Json?
+  featuredImage       String?
+  sourceFilename      String?
+  extractedImageCount Int        @default(0)
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+
+  @@map("blogs")
+}

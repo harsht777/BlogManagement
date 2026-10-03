@@ -1,0 +1,36 @@
+{
+  "name": "blog-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blog Management Admin Panel - Local Monorepo",
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "tsx scripts/dev-start.ts",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "db:migrate": "npm run db:migrate --workspace=apps/api",
+    "db:seed": "npm run db:seed --workspace=apps/api",
+    "test:parser": "tsx scripts/run_phase3a_tests.ts",
+    "test:persistence": "tsx scripts/run_phase3b_tests.ts",
+    "test:upload": "tsx scripts/run_phase4b_tests.ts",
+    "test:editor": "tsx scripts/run_phase4c_tests.ts",
+    "test:renderer": "tsx scripts/run_phase4d_tests.ts",
+    "test:lifecycle": "tsx scripts/run_phase4e_tests.ts"
+  },
+  "keywords": [
+    "blog-management",
+    "nextjs",
+    "graphql",
+    "apollo-server",
+    "prisma",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}

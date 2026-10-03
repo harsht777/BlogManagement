@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables & secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+!.env.example
+
+# Next.js & TypeScript build output
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+
+# Testing & Generated Results
+coverage/
+*.lcov
+.nyc_output
+sample-documents/parser-results/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Storage folders (keep .gitkeep)
+storage/documents/*
+!storage/documents/.gitkeep
+storage/images/*
+!storage/images/.gitkeep
+storage/temp/*
+!storage/temp/.gitkeep
+
+# Large local test files
+Doc1.docx
+
+# IDE / Editor
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
