@@ -145,6 +145,47 @@ export default function RealUploadPage(): React.JSX.Element {
       />
 
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+        {/* Creation Mode Switcher Header */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            backgroundColor: '#1e293b',
+            padding: '6px',
+            borderRadius: '8px',
+            border: '1px solid #334155',
+            marginBottom: '20px',
+          }}
+        >
+          <span
+            style={{
+              padding: '8px 16px',
+              fontSize: '13px',
+              fontWeight: '700',
+              borderRadius: '6px',
+              backgroundColor: '#0284c7',
+              color: '#ffffff',
+              border: '1px solid #0284c7',
+            }}
+          >
+            Upload DOCX Document
+          </span>
+          <Link
+            href="/admin/create"
+            style={{
+              padding: '8px 16px',
+              fontSize: '13px',
+              fontWeight: '700',
+              borderRadius: '6px',
+              color: '#94a3b8',
+              textDecoration: 'none',
+            }}
+          >
+            Create Blog Manually
+          </Link>
+        </div>
+
         {/* SUCCESS STATE */}
         {createdBlog && (
           <div

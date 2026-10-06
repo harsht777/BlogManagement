@@ -35,9 +35,9 @@ export const typeDefs = `#graphql
 
   type Mutation {
     """
-    Creates a basic blog entry.
+    Creates a basic blog entry (always defaults to DRAFT status).
     """
-    createBlog(title: String!, status: BlogStatus): Blog!
+    createBlog(title: String!, contentJson: String): Blog!
 
     """
     Ingests a DOCX document from local file path (development CLI test runner).

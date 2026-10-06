@@ -21,7 +21,8 @@
     "test:upload": "tsx scripts/run_phase4b_tests.ts",
     "test:editor": "tsx scripts/run_phase4c_tests.ts",
     "test:renderer": "tsx scripts/run_phase4d_tests.ts",
-    "test:lifecycle": "tsx scripts/run_phase4e_tests.ts"
+    "test:lifecycle": "tsx scripts/run_phase4e_tests.ts",
+    "test:manual": "tsx scripts/run_phase4f_manual_tests.ts"
   },
   "keywords": [
     "blog-management",

@@ -30,27 +30,47 @@ export default function DashboardPage(): React.JSX.Element {
         subtitle="Overview of blog posts, publishing status, and content metrics"
         healthStatus={loading ? 'Querying API...' : error ? 'API Disconnected' : data?.health}
         action={
-          <Link
-            href="/admin/upload"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '10px 18px',
-              backgroundColor: '#0284c7',
-              color: '#ffffff',
-              borderRadius: '8px',
-              fontWeight: '600',
-              fontSize: '14px',
-              textDecoration: 'none',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            }}
-          >
-            <svg style={{ width: '18px', height: '18px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-            Upload Blog
-          </Link>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link
+              href="/admin/create"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 18px',
+                backgroundColor: '#0284c7',
+                color: '#ffffff',
+                borderRadius: '8px',
+                fontWeight: '600',
+                fontSize: '14px',
+                textDecoration: 'none',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              }}
+            >
+              <svg style={{ width: '18px', height: '18px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Create Manually
+            </Link>
+            <Link
+              href="/admin/upload"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 18px',
+                backgroundColor: '#1e293b',
+                color: '#f8fafc',
+                border: '1px solid #334155',
+                borderRadius: '8px',
+                fontWeight: '600',
+                fontSize: '14px',
+                textDecoration: 'none',
+              }}
+            >
+              Upload DOCX
+            </Link>
+          </div>
         }
       />
 

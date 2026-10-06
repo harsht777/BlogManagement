@@ -38,8 +38,31 @@ export const resolvers = {
     },
   },
   Mutation: {
-    createBlog: async (_: unknown, { title, status }: { title: string; status?: BlogStatus }) => {
-      const blog = await blogService.createBlog({ title, status });
+    createBlog: async (
+      _: unknown,
+      { title, contentJson }: { title: string; contentJson?: string }
+    ) => {
+      let parsedAST: any = undefined;
+      if (contentJson !== undefined && contentJson !== null) {
+        try {
+          parsedAST = JSON.parse(contentJson);
+        } catch {
+          throw new Error('Invalid JSON format for contentJson.');
+        }
+
+        // Server-Side AST Validation: must be an object with a blocks array
+        if (!parsedAST || typeof parsedAST !== 'object' || !Array.isArray(parsedAST.blocks)) {
+          throw new Error("Invalid AST structure: contentJson must be an object containing a 'blocks' array.");
+        }
+
+        for (const block of parsedAST.blocks) {
+          if (!block || typeof block !== 'object' || typeof block.type !== 'string') {
+            throw new Error("Invalid AST block: Each block in contentJson must be an object with a valid 'type' string property.");
+          }
+        }
+      }
+
+      const blog = await blogService.createBlog({ title, status: BlogStatus.DRAFT, contentJson: parsedAST });
       return {
         id: blog.id,
         title: blog.title,

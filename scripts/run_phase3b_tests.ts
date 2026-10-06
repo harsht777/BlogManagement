@@ -1,5 +1,39 @@
 import path from 'path';
 import fs from 'fs';
+import { execSync } from 'child_process';
+
+const rootDir = process.cwd();
+const apiEnvPath = path.join(rootDir, 'apps', 'api', '.env');
+if (fs.existsSync(apiEnvPath)) {
+  const content = fs.readFileSync(apiEnvPath, 'utf-8');
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+      const [key, ...vals] = trimmed.split('=');
+      const val = vals.join('=').replace(/^["']|["']$/g, '');
+      if (!process.env[key.trim()]) {
+        process.env[key.trim()] = val;
+      }
+    }
+  }
+}
+if (!process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = 'postgresql://postgres:postgres@127.0.0.1:5432/blog_management_dev?schema=public';
+}
+
+try {
+  const pgCtl = 'C:\\PostgreSQL\\17\\bin\\pg_ctl.exe';
+  if (fs.existsSync(pgCtl)) {
+    try {
+      execSync(`"${pgCtl}" -D "C:\\PostgreSQL\\17\\data" status`, { stdio: 'ignore' });
+    } catch {
+      execSync(`"${pgCtl}" -D "C:\\PostgreSQL\\17\\data" -l "C:\\PostgreSQL\\17\\data\\server.log" start`, { stdio: 'ignore' });
+    }
+  }
+} catch {
+  // Ignore
+}
+
 import { ingestService } from '../apps/api/src/services/ingest.service.js';
 import { blogService } from '../apps/api/src/services/blog.service.js';
 import { resolvers } from '../apps/api/src/graphql/resolvers/index.js';

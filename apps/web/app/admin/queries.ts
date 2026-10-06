@@ -33,6 +33,22 @@ export const GET_BLOG_BY_ID = gql`
   }
 `;
 
+export const CREATE_BLOG = gql`
+  mutation CreateBlog($title: String!, $contentJson: String) {
+    createBlog(title: $title, contentJson: $contentJson) {
+      id
+      title
+      status
+      contentJson
+      featuredImage
+      sourceFilename
+      extractedImageCount
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
 export const UPLOAD_BLOG_DOCUMENT = gql`
   mutation UploadBlogDocument($fileName: String!, $fileBufferBase64: String!) {
     uploadBlogDocument(fileName: $fileName, fileBufferBase64: $fileBufferBase64) {

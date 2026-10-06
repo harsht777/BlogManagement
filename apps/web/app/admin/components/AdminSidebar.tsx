@@ -51,6 +51,15 @@ export function AdminSidebar(): React.JSX.Element {
         </svg>
       ),
     },
+    {
+      label: 'Create Blog',
+      href: '/admin/create',
+      icon: (
+        <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+      ),
+    },
   ];
 
   return (

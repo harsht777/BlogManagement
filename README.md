@@ -12,9 +12,10 @@ The Blog Management Admin Panel enables administrators to upload `.doc` / `.docx
 ## 2. Key Features
 
 - 📄 **DOCX Document Ingestion:** Parsing engine built on Mammoth, fast-xml-parser, officeparser, and adm-zip for complete OpenXML element extraction.
+- ✍️ **Manual Blog Creation with Dynamic Sections:** Compose blogs from scratch using an interactive block builder allowing administrators to add, edit, reorder (move up/down), and delete sections dynamically (headings, paragraphs, lists, images, quotes, callouts, tables).
 - 🌳 **Structured BlogDocumentAST:** Typed JSON representation supporting headings, paragraphs with inline styles (bold, italic, links), ordered/unordered lists, blockquotes/callouts, tables with dynamic cell grid editing, and inline/featured images.
 - 🖼️ **Image Extraction & Static Serving:** Embedded images are extracted, hashed via SHA-256 for deduplication, saved to local persistent storage (`storage/images`), and served statics via Express & Next.js.
-- ⚡ **Apollo GraphQL API:** Strongly-typed schema providing mutations for document upload, AST editing, title/excerpt updates, publish/unpublish lifecycle, and blog deletion.
+- ⚡ **Apollo GraphQL API:** Strongly-typed schema providing mutations for document upload, manual blog creation, AST editing, title/excerpt updates, publish/unpublish lifecycle, and blog deletion.
 - 🎨 **Kofuku Blog Renderer:** Reusable, pixel-perfect blog renderer with inline text spacing preservation, dynamic table rendering, responsive typography, and hero header formatting.
 - ✏️ **Split Desktop Workspace Editor:** Real-time 40/60 split-pane workspace with structured AST editor on the left and instant live preview on the right.
 - 🚀 **Single-Command Local Stack:** Start PostgreSQL 17, Apollo GraphQL Server (port 4000), and Next.js Web App (port 3000) with a single `npm run dev` command.
@@ -227,6 +228,9 @@ npm run test:renderer
 
 # Phase 4E: Publish/Unpublish/Delete Lifecycle
 npm run test:lifecycle
+
+# Phase 4F: Manual Blog Creation & Dynamic Sections
+npm run test:manual
 ```
 
 ---
